@@ -206,7 +206,28 @@ elif authselection == "2":
                     print("hello world")
                 elif newcmdinstalled == "youtube":
                     webbrowser.open("http://youtube.com/")
+            elif cmdbar == "camcapture":
+                import pygame
+                import pygame.camera
+                pygame.camera.init()
+                camlist = pygame.camera.list_cameras()
+                if camlist:
+                    cam = pygame.camera.Camera(camlist[0], (640, 480))
+                    cam.start()
+                    image = cam.get_image()
+                    capname = input("Enter capture image name: ")
+                    pygame.image.save(image, capname + ".png")
+                    print("Please find the image in PyProject main directory.")
+                else:
+                    print("No camera device located.")
 
+            elif cmdbar == "killterminal":
+                killquery = input("Please confirm by entering your password: ")
+                if killquery == acc1[2] or killquery == acc2[2] or killquery == acc3[2]:
+                    print("Confirmed terminal kill. Thank you for using PyProject X")
+                    quit()
+                else:
+                    print("Unable to kill due to failed authentication.")
             else:
                 if isadmin == False:
                     print("Enter a valid/registered command")
