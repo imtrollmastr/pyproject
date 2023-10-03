@@ -3,15 +3,16 @@ import time
 import pygame
 import robloxpy
 import getpass as gt
+import sys
 newcmdname = "lololololololmao1982318"
 newcmdinstalled = "hdbfsiufgeyyuerytuv-___s"
 isadmin = False
 # parental settings
 # please change parental preferences in authstore.py
-import authstore
-if authstore.requirepassword == True:
+import parentalsettings
+if parentalsettings.requirepassword == True:
     parentpassword = input("Enter parental code: ")
-    if parentpassword == authstore.requiredpassword:
+    if parentpassword == parentalsettings.requiredpassword:
         pass
     else:
         print("Alerting parent.")
@@ -72,12 +73,7 @@ import json
 import os
 import getpass as gt
 user = gt.getuser()
-auth1 = '{"username": "imtrollmastr_", "password": "yomamaobama"}'
-auth2 = '{"username": "guest", "password": "pyproject1234"}'
-auth3 = '{"username": "isuckatmath", "password": "idk_bruh"}'
-loadauth1 = json.loads(auth1)
-loadauth2 = json.loads(auth2)
-loadauth3 = json.loads(auth3)
+import profilesys
 
 # main
 print("WARNING: The program is currently only used for MacOS. Some things may not be compatible on other operating systems.")
@@ -90,7 +86,7 @@ if authselection == "1":
 elif authselection == "2":
     usrauth = input("Enter username: ")
     pswauth = input("Enter password: ")
-    if usrauth == loadauth1["username"] and pswauth == loadauth1["password"] or usrauth == user and pswauth == loadauth2["password"] or usrauth == loadauth3["username"] and pswauth == loadauth3["password"]:
+    if usrauth == profilesys.x1["username"] and pswauth == profilesys.x1["password"] or usrauth == profilesys.x2["username"] and pswauth == profilesys.x2["password"] or usrauth == profilesys.x3["username"] and pswauth == profilesys.x3["password"] or usrauth == profilesys.x4["username"] and pswauth == profilesys.x4["password"] or usrauth == profilesys.x5["username"] and pswauth == profilesys.x5["password"] or usrauth == profilesys.x6["username"] and pswauth == profilesys.x6["password"] or usrauth == profilesys.x7["username"] and pswauth == profilesys.x7["password"] or usrauth == profilesys.x8["username"] and pswauth == profilesys.x8["password"]:
         print("Connecting to server...")
         time.sleep(3)
         print("Successfully connected to pyprojectserver.")
@@ -428,7 +424,8 @@ elif authselection == "2":
                     print("Input correct user ID.")
             elif cmdbar == "killterminal":
                 killquery = input("Please confirm by entering your password: ")
-                if killquery == loadauth1["password"] or killquery == loadauth2["password"] or killquery == loadauth3["password"]:
+                import profilesys
+                if killquery == profilesys.x1["password"] or killquery == profilesys.x2["password"] or killquery == profilesys.x3["password"]:
                     print("Confirmed terminal kill. Thank you for using PyProject X")
                     quit()
                 else:
