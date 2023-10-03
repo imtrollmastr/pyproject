@@ -2,25 +2,95 @@ import webbrowser
 import time
 import pygame
 import robloxpy
+import getpass as gt
 newcmdname = "lololololololmao1982318"
 newcmdinstalled = "hdbfsiufgeyyuerytuv-___s"
 isadmin = False
-# auth
-acc1 = ["imtrollmastr_","Jo Hang Johann LO","yomamaobama","admin"]
-acc2 = ["sitypooh","Sze Yan Sity YEUNG","Aquarius1984!","officer"]
-acc3 = ["guest","Johnny Appleseed","password","member"]
+# parental settings
+# please change parental preferences in authstore.py
+import authstore
+if authstore.requirepassword == True:
+    parentpassword = input("Enter parental code: ")
+    if parentpassword == authstore.requiredpassword:
+        pass
+    else:
+        print("Alerting parent.")
+else:
+    pass
+        
+# something
+if isadmin == True:
+    print("Stop hacking and changing variables.")
+    quit()
+else:
+    pass
+def error(code):
+    print("Error Code " + str(code) + ":")
+    if code == 400:
+        print("Bad Request to Server.")
+        quit()
+    elif code == 401:
+        print("Unauthorized.")
+        quit()
+    elif code == 402:
+        print("Payment in order to continue.")
+        quit()
+    elif code == 403:
+        print("Forbidden.")
+        quit()
+    elif code == 404:
+        print("Not found.")
+        quit()
+    elif code == 405:
+        print("Method not allowed.")
+        quit()
+    elif code == 406:
+        print('Not acceptable.')
+        quit()
+    elif code == 407:
+        print("Proxy authentication required.")
+        quit()
+    elif code == 408:
+        print("Request timeout")
+        quit()
+    elif code == 409:
+        print("Conflict.")
+        quit()
+    elif code == 410:
+        print("Gone.")
+        quit()
+    elif code == 418:
+        print("The requested entity body is short and stout.")
+        print("Tip me over and pour me out.")
+    elif code == 451:
+        print("We're sorry, but PyProject has been blocked from your country/city.")
+    else:
+        print("Incorrect error code, please move on.")
+        pass
+# store usernames and passwords and authenticate them with json
+import json
+import os
+import getpass as gt
+user = gt.getuser()
+auth1 = '{"username": "imtrollmastr_", "password": "yomamaobama"}'
+auth2 = '{"username": "guest", "password": "pyproject1234"}'
+auth3 = '{"username": "isuckatmath", "password": "idk_bruh"}'
+loadauth1 = json.loads(auth1)
+loadauth2 = json.loads(auth2)
+loadauth3 = json.loads(auth3)
+
 # main
 print("WARNING: The program is currently only used for MacOS. Some things may not be compatible on other operating systems.")
 print("1 - Create a temporary account")
 print("2 - Sign in with an existing account")
+print("3 - Google Authentication")
 authselection = input("Select a authentication method: ")
 if authselection == "1":
-    print("Unable to complete event/task (missing files)")
-    print("ERROR CODE: 404")
+    error(405)
 elif authselection == "2":
     usrauth = input("Enter username: ")
     pswauth = input("Enter password: ")
-    if usrauth == acc1[0] and pswauth == acc1[2] or usrauth == acc2[0] and pswauth == acc2[2] or usrauth == acc3[0] and pswauth == acc3[2]:
+    if usrauth == loadauth1["username"] and pswauth == loadauth1["password"] or usrauth == user and pswauth == loadauth2["password"] or usrauth == loadauth3["username"] and pswauth == loadauth3["password"]:
         print("Connecting to server...")
         time.sleep(3)
         print("Successfully connected to pyprojectserver.")
@@ -162,7 +232,7 @@ elif authselection == "2":
                     print("Enter a correct selection number or suggest a song at https://bit.ly/pyprojectsuggestions")
             elif cmdbar == "davinci-ai deploy":
                 from openai2 import Chat
-                api_key = "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"
+                api_key = "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"
                 davinci = Chat(api_key=api_key, model="gpt-3.5-turbo-16k-0613")
                 request = input("Talk to DaVinci: ")
                 ans = davinci.request(request)
@@ -212,18 +282,153 @@ elif authselection == "2":
                 pygame.camera.init()
                 camlist = pygame.camera.list_cameras()
                 if camlist:
-                    cam = pygame.camera.Camera(camlist[0], (640, 480))
+                    cam = pygame.camera.Camera(camlist[0], (1920, 1080))
                     cam.start()
                     image = cam.get_image()
+                    print("Now in HD resolution!")
                     capname = input("Enter capture image name: ")
                     pygame.image.save(image, capname + ".png")
                     print("Please find the image in PyProject main directory.")
                 else:
                     print("No camera device located.")
+            elif cmdbar == "time deploy":
+                from datetime import datetime
+                now = datetime.now()
+                current_time = now.strftime("%H:%M:%S")
+                print("Current time: " + current_time)
+            elif cmdbar == "date deploy":
+                from datetime import date
+                today = date.today()
+                print("Current date: " + str(today))
+            elif cmdbar == "marketplace deploy":
+                # Define a simple Product class
+                class Product:
+                    def __init__(self, name, price):
+                        self.name = name
+                        self.price = price
 
+            # Create a list to store products
+                products = []
+
+            # Function to add a product to the marketplace
+                def add_product():
+                    name = input("Enter product name: ")
+                    price = float(input("Enter product price: "))
+                    product = Product(name, price)
+                    products.append(product)
+                    print(f"{name} added to the marketplace.")
+
+# Function to display available products
+                def display_products():
+                    print("Available Products:")
+                    for idx, product in enumerate(products, start=1):
+                        print(f"{idx}. {product.name} - ${product.price:.2f}")
+
+# Function to make a purchase
+                def make_purchase():
+                    display_products()
+                    choice = int(input("Enter the number of the product you want to purchase: "))
+    
+                    if 1 <= choice <= len(products):
+                        product = products[choice - 1]
+                        print(f"You purchased {product.name} for ${product.price:.2f}.")
+                    else:
+                        print("Invalid choice.")
+
+# Main loop
+                while True:
+                    print("\nMarketplace Menu:")
+                    print("1. View Products")
+                    print("2. Make a Purchase")
+                    print("3. Exit")
+                    if isadmin == True:
+                        print("4. Add Product")
+                    else:
+                        pass
+
+    
+                    option = input("Enter your choice: ")
+    
+                    if option == '1':
+                        display_products()
+                    elif option == '2':
+                        make_purchase()
+                    elif option == '3':
+                        print("Thank you for using the marketplace. Goodbye!")
+                        break
+                    elif option == "4":
+                        if isadmin == True:
+                            add_product()
+                        else:
+                            print("Invalid choice. Please try again.")
+                    else:
+                        print("Invalid choice. Please try again.")
+    
+            elif cmdbar == "weather deploy":
+                # importing library
+                import requests
+                from bs4 import BeautifulSoup
+
+# enter city name
+                city = input("Enter city name: ")
+
+# creating url and requests instance
+                url = "https://www.google.com/search?q="+"weather"+city
+                html = requests.get(url).content
+
+# getting raw data
+                soup = BeautifulSoup(html, 'html.parser')
+                temp = soup.find('div', attrs={'class': 'BNeawe iBp4i AP7Wnd'}).text
+                str = soup.find('div', attrs={'class': 'BNeawe tAd8D AP7Wnd'}).text
+
+# formatting data
+                data = str.split('\n')
+                time = data[0]
+                sky = data[1]
+
+# getting all div tag
+                listdiv = soup.findAll('div', attrs={'class': 'BNeawe s3v9rd AP7Wnd'})
+                strd = listdiv[5].text
+
+# getting other required data
+                pos = strd.find('Wind')
+                other_data = strd[pos:]
+
+# printing all data
+                print("Temperature: ", temp)
+            elif cmdbar == "spotify deploy":
+                import webbrowser
+                print("WARNING: Only use this if you have Spotify installed.")
+                print("1. Track")
+                print("2. Playlist")
+                print("3. Album")
+                trackorplaylist = input("Track or Playlist: ")
+                if trackorplaylist == "track":
+                    track_id = input("Enter Track ID: ")
+                    webbrowser.open("spotify:track:" + track_id)
+                elif trackorplaylist == "playlist":
+                    playlist_id = input("Enter Playlist ID: ")
+                    webbrowser.open("spotify:playlist:" + playlist_id)
+                elif trackorplaylist == "album":
+                    album_id = input("Enter Album ID: ")
+                    webbrowser.open("spotify:album:" + album_id)
+                else:
+                    print("Incorrect selection.")
+
+            elif cmdbar == "getRBLX deploy_headshot(v2)":
+                import requests
+                user_id = input("Input User ID: ")
+                url = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" + user_id +"&size=48x48&format=Png&isCircular=false"
+                r = requests.get(url)
+                if r.status_code == 200:
+                    print(r.text)
+                    copypasteimage = input("Copy and paste the imageUrl in here: ")
+                    webbrowser.open(copypasteimage)
+                else:
+                    print("Input correct user ID.")
             elif cmdbar == "killterminal":
                 killquery = input("Please confirm by entering your password: ")
-                if killquery == acc1[2] or killquery == acc2[2] or killquery == acc3[2]:
+                if killquery == loadauth1["password"] or killquery == loadauth2["password"] or killquery == loadauth3["password"]:
                     print("Confirmed terminal kill. Thank you for using PyProject X")
                     quit()
                 else:
@@ -235,6 +440,38 @@ elif authselection == "2":
                     print("Hello, administrator " + identity + ", please create a new registered command to continue.")
     else:
         print("Incorrect authentication login. Please restart and login again.")
+elif authselection == "3":
+    import webbrowser
 
+# Replace with your Google OAuth client ID, redirect URI, and desired scopes
+    client_id = '1020918721284-90hmih7dghjusvud8kmbih0brn7m45fm.apps.googleusercontent.com'
+    redirect_uri = 'https://pyproject-rho.vercel.app/callback.html/'
+    scopes = ['openid', 'profile','email']  # Add the scopes you need
+
+# Construct the Google OAuth2.0 authorization URL with scopes
+    scope_str = ' '.join(scopes)
+    auth_url = f'https://accounts.google.com/o/oauth2/auth?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope={scope_str}'
+
+# Open the authorization URL in the default web browser
+    webbrowser.open(auth_url)
+    time.sleep(4)
+    print("Please restart and use the following authentication details:")
+    print("Username: guest")
+    print("Password: password")
 else:
     print("Please restart and select a authentication method.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
