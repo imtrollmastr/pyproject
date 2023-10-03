@@ -1,6 +1,5 @@
 # profile storage
 import json
-import time
 profilesys1 = '{"username": "imtrollmastr_", "password": "yomamaobama"}'
 profilesys2 = '{"username": "registereduser1", "password": "pyproject1234"}'
 profilesys3 = '{"username": "registereduser2", "password": "pyproject1234"}'
