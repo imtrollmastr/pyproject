@@ -40,7 +40,7 @@
             function checkPassword() {
              var password = document.getElementById("passwordBox");
              var passwordText = password.value;
-             if(passwordText == "Ernest300") {
+             if(passwordText == "admin") {
               return true;
              }
              alert("Access denied! Incorrect password!");
@@ -51,7 +51,7 @@
     <body style="background-color:black;">
         <br></br>
         <p style="font-size: 30pt;">PyProject WebVersion</p>
-        <p>Please enter monitor passwordd to continue</p>
+        <p>Please enter monitor password to continue</p>
         <p>Password:<input id="passwordBox" type="password"/></p>
         <a href="dest.html" onclick="return checkPassword();">
          Submit Monitor Password
