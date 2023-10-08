@@ -1,0 +1,60 @@
+
+<html>
+    <head>
+        <title>PyProject X | imtrollmastr</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            (function(w,t,c,p,s,e){p=new Promise(function(r){w[c]={client:function(){if(!s){
+            s=document.createElement(t);s.src='https://js.cobrowse.io/CobrowseIO.js';s.async=1;
+            e=document.getElementsByTagName(t)[0];e.parentNode.insertBefore(s,e);s.onload=function()
+            {r(w[c]);};}return p;}};});})(window,'script','CobrowseIO');
+        
+            CobrowseIO.license = "J36f5zNK6SxeAw";    
+            CobrowseIO.client().then(function(){
+                CobrowseIO.start();
+            });
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+            button {
+                background-color: #333;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                 border-radius: 5px;
+                cursor: pointer;
+                text-align: center;
+                font-family: 'Montserrat', cursive;
+            }
+            h2, h3, p, a {
+                color: #fff;
+                border: none;
+                text-align: center;
+                font-family: 'Montserrat', cursive;
+            }
+            .div {
+                text-align: center;
+            }
+        </style>
+        <script>
+            function checkPassword() {
+             var password = document.getElementById("passwordBox");
+             var passwordText = password.value;
+             if(passwordText == "Ernest300") {
+              return true;
+             }
+             alert("Access denied! Incorrect password!");
+             return false;
+             }
+        </script>
+    </head>
+    <body style="background-color:black;">
+        <br></br>
+        <p style="font-size: 30pt;">PyProject WebVersion</p>
+        <p>Please enter monitor passwordd to continue</p>
+        <p>Password:<input id="passwordBox" type="password"/></p>
+        <a href="dest.html" onclick="return checkPassword();">
+         Submit Monitor Password
+        </a>
+    </body>
+</html>
